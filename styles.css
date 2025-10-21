@@ -1,0 +1,144 @@
+/* 🌸 Base setup */
+body {
+  margin: 0;
+  background: linear-gradient(180deg, #ffeefb, #f8faff);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-family: 'Poppins', sans-serif;
+  overflow: hidden;
+}
+
+/* 🎮 Game container */
+#game {
+  position: relative;
+  width: 420px;
+  height: 600px;
+  background: rgba(255, 255, 255, 0.85);
+  border-radius: 24px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+}
+
+/* 💖 Floating score bar (HUD) */
+#hud {
+  position: absolute;
+  top: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 240px;
+  padding: 10px 18px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #444;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
+  animation: floaty 3s ease-in-out infinite;
+  z-index: 10;
+}
+
+@keyframes floaty {
+  0%, 100% { transform: translate(-50%, 0); }
+  50% { transform: translate(-50%, -4px); }
+}
+
+/* 🐇 Stage setup */
+#stage {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  overflow: hidden;
+}
+
+/* 🐰 Bunny */
+#bunny {
+  position: absolute;
+  bottom: 120px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: #f8b4d9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  transition: transform 0.3s ease;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.06);
+  z-index: 5;
+}
+
+.ear {
+  position: absolute;
+  width: 20px;
+  height: 40px;
+  background: inherit;
+  border-radius: 10px;
+  top: -30px;
+}
+
+.ear-left { left: 15px; transform: rotate(-10deg); }
+.ear-right { right: 15px; transform: rotate(10deg); }
+
+.face {
+  z-index: 2;
+}
+
+/* 🌈 Platforms */
+#platform, #next-platform {
+  position: absolute;
+  bottom: 50px;
+  width: 120px;
+  height: 20px;
+  border-radius: 10px;
+  transition: left 0.6s ease;
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* 💬 Messages */
+#message {
+  position: absolute;
+  top: 45%;
+  width: 100%;
+  text-align: center;
+  font-size: 1.2rem;
+  color: #777;
+}
+
+/* ✨ Effects */
+.plus-one {
+  position: absolute;
+  color: #ff9bc7;
+  font-weight: bold;
+  font-size: 18px;
+  animation: floatUp 0.8s ease-out forwards;
+}
+
+@keyframes floatUp {
+  0% { opacity: 1; transform: translateY(0); }
+  100% { opacity: 0; transform: translateY(-40px); }
+}
+
+.falling {
+  animation: bunnyFall 0.8s ease-in forwards;
+}
+
+@keyframes bunnyFall {
+  to {
+    transform: translateY(150px) rotate(20deg);
+    opacity: 0.8;
+  }
+}
