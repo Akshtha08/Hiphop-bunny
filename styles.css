@@ -25,7 +25,8 @@ body {
 
     border-radius:28px;
 
-    border:5px solid white;
+    border:6px solid #ffffff;
+    outline:3px solid #d8e8ff;
 
     box-shadow:
         0 25px 60px rgba(0,0,0,.25);
@@ -56,6 +57,8 @@ body {
     border-radius:18px;
 
     color:white;
+  
+    animation:floaty 3s ease-in-out infinite;
 
     text-shadow:0 2px 5px rgba(0,0,0,.4);
 
@@ -83,16 +86,33 @@ body {
     background-position:center;
 
 }
+#stage::before{
+    content:"";
+    position:absolute;
+    inset:0;
 
+    background:linear-gradient(
+        rgba(255,255,255,.08),
+        rgba(255,255,255,0)
+    );
+
+    pointer-events:none;
+    z-index:1;
+}
 /* 🐰 Bunny */
 .bunny{
+    position:absolute;
 
     width:90px;
     height:90px;
 
-    transition:
-        transform .15s ease;
+    display:flex;
+    justify-content:center;
+    align-items:center;
 
+    transition:transform .15s ease;
+
+    z-index:20;
 }
 
 .bunny img{
@@ -100,15 +120,13 @@ body {
     height:100%;
     image-rendering:pixelated;
 }
-.ear {
-  position: absolute;
-  width: 20px;
-  height: 40px;
-  background: inherit;
-  border-radius: 10px;
-  top: -30px;
+.bunny img{
+    width:100%;
+    height:100%;
+    image-rendering:pixelated;
+    user-select:none;
+    pointer-events:none;
 }
-
 
 
 /* 🌈 Platforms */
@@ -116,6 +134,8 @@ body {
 #next-platform{
 
     position:absolute;
+
+    bottom:50px;
 
     width:150px;
 
@@ -128,7 +148,6 @@ body {
     background-repeat:no-repeat;
 
 }
-
 .hidden {
   display: none !important;
 }
